@@ -17,4 +17,7 @@ public class AbstractBaseEntity {
 
   protected Integer id;
 
+  public boolean isNew() {
+    return this.id == null;
+  }
 }
