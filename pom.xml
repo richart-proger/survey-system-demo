@@ -17,9 +17,11 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
 
-    <spring.version>5.3.10</spring.version>
-    <lombok.version>1.16.16</lombok.version>
-
+    <!-- Spring -->
+    <spring.version>5.3.14</spring.version>
+    <spring-data-jpa.version>2.6.0</spring-data-jpa.version>
+    <!-- Lombok -->
+    <lombok.version>1.18.22</lombok.version>
     <!-- Logging -->
     <logback.version>1.2.6</logback.version>
     <slf4j.version>1.7.32</slf4j.version>
@@ -32,6 +34,8 @@
     <hibernate-validator.version>7.0.2.Final</hibernate-validator.version>
     <!--<javax-el.version>3.0.1-b06</javax-el.version>-->
     <validation-api.version>2.0.1.Final</validation-api.version>
+    <!--JSON-->
+    <jackson.version>2.13.0</jackson.version>
   </properties>
 
   <dependencies>
@@ -39,12 +43,12 @@
     <!-- Spring -->
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
+      <artifactId>spring-context-support</artifactId>
       <version>${spring.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
+      <artifactId>spring-webmvc</artifactId>
       <version>${spring.version}</version>
     </dependency>
 
@@ -53,6 +57,11 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>${hibernate.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>${spring-data-jpa.version}</version>
     </dependency>
 
     <!--Validation-->
@@ -65,6 +74,23 @@
       <groupId>javax.validation</groupId>
       <artifactId>validation-api</artifactId>
       <version>${validation-api.version}</version>
+    </dependency>
+
+    <!--JSON-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-hibernate5</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>${jackson.version}</version>
     </dependency>
 
     <!-- Tests -->
@@ -142,5 +168,15 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
